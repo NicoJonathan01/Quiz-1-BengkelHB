@@ -23,7 +23,7 @@ public class TransaksiScreen {
 
         Date tanggalTransaksi = Dialog.showInputDialogForDate("Masukkan tanggal: ", "Input tanggal", new Date());
 
-        double totalBayar = transaksiController.hitungTotalBayar(listKeranjang, listLayanan);
+        double totalBayar = transaksiController.hitungTotalBayar(listKeranjang, listLayanan, nama);
 
         transaksiController.setTransaksiPelanggan(nama, jenisPembayaran, tanggalTransaksi, totalBayar, listKeranjang, listLayanan);
 
