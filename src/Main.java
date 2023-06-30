@@ -3,6 +3,7 @@ import view.MainMenuScreen;
 import controller.*;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     private ArrayList<Pelanggan> listPelanggan;
@@ -134,6 +135,32 @@ public class Main {
         MainMenuScreen mainMenu = new MainMenuScreen(mainMenuController, pelangganController, transaksiController, keranjangController, layananController, main.getListBarang());
 
         mainMenu.displayMainMenu();
+
+        main.showTigaBarangPalingBanyakDibeli();
         
+    }
+
+    public void showTigaBarangPalingBanyakDibeli(){
+        int jumlahCastrol = 0, jumlahNGK = 0, jumlahVKool = 0, jumlahDunlop = 0;
+
+        for(Barang barang : listBarang){
+            if(barang.getNamaBarang().equals("Castrol")){
+                jumlahCastrol++;
+            }else if(barang.getNamaBarang().equals("NGK")){
+                jumlahNGK++;
+            }else if(barang.getNamaBarang().equals("V-Kool")){
+                jumlahVKool++;
+            }else if(barang.getNamaBarang().equals("Dunlop")){
+                jumlahDunlop++;
+            }
+        }
+
+        int[] numbers = {jumlahCastrol, jumlahNGK, jumlahVKool, jumlahDunlop};
+
+        Arrays.sort(numbers);
+        System.out.println(
+            "\nTerlaris pertama: " + numbers[numbers.length-1] + "\nTerlaris kedua: " + numbers[numbers.length-2] + "\nTerlaris ketiga: " + numbers[numbers.length-3]
+        );
+    
     }
 }
